@@ -7,13 +7,11 @@ using namespace std;
 class Cipher {
 private:
     char arr1[N];
-    char arr2[N];
 
 public:
     Cipher() {
         for (int i = 0; i < N; i++) {
             arr1[i] = 'a' + i;
-            arr2[i] = 'z' - i;
         }
     }
 
@@ -22,7 +20,7 @@ public:
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < N; j++) {
                 if (word[i] == arr1[j]) {
-                    encryptedWord[i] = arr2[(j + key) % N];
+                    encryptedWord[i] = arr1[(j + key) % N];
                     break; 
                 }
             }
@@ -34,7 +32,7 @@ public:
         int len = strlen(word);
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < N; j++) {
-                if (word[i] == arr2[j]) {
+                if (word[i] == arr1[j]) {
                     decryptedWord[i] = arr1[(j - key + N) % N];
                     break; 
                 }
